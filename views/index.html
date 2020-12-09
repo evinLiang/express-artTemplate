@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>APP</title>
-  </head>
-  <body>
-    <div id="app">
-    	{{include './head.html'}}
-    	{{each user.tags}}
-	        <li>{{$value}}</li>
-	    {{/each}}
-	    <%
-		  include('./head.html', {
-		    user: {name: 'world'}
-		  });
-		%>
-    </div>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>APP</title>
+</head>
+
+<body>
+  {{if errors && errors.length > 0}}
+  <li>{{ errors }}</li>
+  {{/if}}
+  {{if success}}
+  <li>{{ success }}</li>
+  {{/if}}
+  <div id="app">
+    <form action="/" method="POST">
+      <input type="text" placeholder="用户名" name="username">
+      <input type="text" placeholder="密码" name="passwork">
+      <button type="submit">确定</button>
+    </form>
+  </div>
+</body>
+
 </html>
